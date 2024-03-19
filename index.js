@@ -1,12 +1,18 @@
-const express = require("express");
-const app = express();
-const menuRoutes = require("./routes/menu");
+require('dotenv').config();
 
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use("/menu", menuRoutes);
+const express = require('express');
+const app = express();
+const menuRoutes = require('./routes/menu');
+
+// Middlewares
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+// Routes
+app.use('/menu', menuRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
