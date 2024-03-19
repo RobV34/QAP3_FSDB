@@ -3,9 +3,11 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const menuRoutes = require("./routes/menu");
+const path = require("path");
 
 // Set the view engine to ejs
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // Middlewares
 app.use(express.json());
