@@ -6,56 +6,87 @@
   <title>Edit Menu Item</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-  
-    h1 {
-      color: #444;
-      text-align: center;
-    }
-  
-    form {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-  
-    input[type="text"],
-    input[type="number"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box; /* Makes sure padding does not affect overall width */
-    }
-  
-    textarea {
-      height: 150px;
-      resize: vertical; /* Allows vertical resizing, not horizontal */
-    }
-  
-    button {
-      background-color: #5bc0de;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-  
-    button:hover {
-      background-color: #31b0d5;
-    }
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 30px; /* Space between nav and content */
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #5bc0de;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #31b0d5;
+  color: #fff;
+}
+
+h1 {
+  color: #444;
+  text-align: center;
+}
+
+form {
+  max-width: 600px;
+  margin: 40px auto; /* Increased top and bottom margin */
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: calc(100% - 22px); /* Factor in padding and border */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+button {
+  display: block; /* Full width */
+  width: 100%;
+  background-color: #5bc0de;
+  color: white;
+  padding: 15px 20px; /* Larger padding for a bigger button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px; /* Larger font size */
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #31b0d5;
+}
+
   </style>
   
   
