@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const menuDAL = require("../services/menu.dal");
 
+
+
+
 // This route should be '/' since you're mounting it on '/menu' in your main server file
 router.get("/", async (req, res) => {
   try {
@@ -16,6 +19,36 @@ router.get("/", async (req, res) => {
 router.get("/add", (req, res) => {
   res.render("add_menu_item");
 });
+
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const item = await menuDAL.getMenuItemById(req.params.id);
+    res.render("edit-menu-item", { item }); // You need to create this view
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+router.get("/delete/:id", async (req, res) => {
+  try {
+    const item = await menuDAL.getMenuItemById(req.params.id);
+    if (!item) {
+      // Handle the case where the item doesn't exist
+      res.status(404).send("Item not found.");
+    } else {
+      // Make sure the price is a number
+      item.price = parseFloat(item.price);
+      res.render("delete-menu-item", { item });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+
+
 
 // This would be in your routes/menu.js file.
 
@@ -98,15 +131,14 @@ router.patch("/api/menu/:id", async (req, res) => {
 
 router.delete("/api/menu/:id", async (req, res) => {
   try {
-    const { id } = req.params;
-    await menuDAL.deleteMenuItem(id);
-    res.status(204).send(); // 204 No Content
+    await menuDAL.deleteMenuItem(req.params.id);
+    res.redirect("/menu"); // Or another appropriate response
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({ message: "Server error while deleting a menu item." });
+    res.status(500).send("Server error");
   }
 });
+
+
 
 module.exports = router;

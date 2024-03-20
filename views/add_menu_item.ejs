@@ -5,15 +5,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Menu Item</title>
-  <!-- Include your stylesheet here if necessary -->
+  <style>
+    body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 30px; /* Add some space below the heading */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center; /* Center align the navigation menu */
+}
+
+nav ul li {
+  display: inline; /* Place nav items in a line */
+  margin-right: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #5bc0de; /* Color match for consistency */
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #31b0d5;
+  color: #fff;
+}
+
+.form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 20px auto; /* Center the form on the page */
+}
+
+.form-container input[type=text],
+.form-container input[type=number],
+.form-container textarea {
+  width: 100%; /* Full width */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Match the border-radius */
+}
+
+.form-container input[type=submit] {
+  background-color: #5bc0de;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container input[type=submit]:hover,
+.form-container input[type=submit]:focus {
+  background-color: #31b0d5;
+}
+
+/* Rest of the styles remain the same as previous */
+
+  </style>
+  
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu">Edit Menu (Manager Access Portal)</a></li>
+      <li><a href="/menu/add">Add Menu Item (Manager Access Portal)</a></li>
+      
+    </ul>
+  </nav>
   <h1>Add a New Menu Item</h1>
-  <form action="/menu/api/menu" method="post">
-      <input type="text" name="name" placeholder="Item Name" required>
-      <textarea name="description" placeholder="Item Description"></textarea>
-      <input type="number" step="0.01" name="price" placeholder="Price" required>
-      <button type="submit">Add Menu Item</button>
-  </form>
+  <div class="form-container">
+    <form action="/menu/add" method="post">
+      <!-- ... your form fields ... -->
+      <input type="text" name="itemName" placeholder="Item Name" required>
+      <textarea name="itemDescription" placeholder="Item Description" required></textarea>
+      <input type="number" name="price" placeholder="Price" required>
+      <input type="submit" value="Add Menu Item">
+    </form>
+  </div>
 </body>
 </html>

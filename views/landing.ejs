@@ -1,0 +1,117 @@
+<!-- views/landing.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Martha's Good Eats</title>
+  <style>
+    body {
+  font-family: 'Open Sans', Arial, sans-serif; /* Updated font family */
+  background-color: #eeeeee; /* Lighter shade for more contrast */
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  color: #444;
+  text-align: center;
+  font-size: 2.5em; /* Larger font size for the title */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center; /* Center the navigation menu */
+}
+
+li {
+  display: inline; /* Inline display for horizontal menu */
+  margin-right: 10px; /* Space between menu items */
+}
+
+li a {
+  text-decoration: none;
+  color: #333; /* More readable text color */
+  font-weight: bold;
+  background-color: #ffffff; /* Light background for buttons */
+  padding: 10px 15px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  transition: all 0.3s; /* Smooth transition for all properties */
+}
+
+li a:hover {
+  background-color: #5bc0de; /* Bright color on hover */
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Larger shadow on hover */
+}
+
+.menu-container {
+  max-width: 800px; /* Maximum width of menu container */
+  margin: 40px auto; /* Center the container */
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.menu-item {
+  border-bottom: 1px solid #eee; /* Separates menu items */
+  padding: 20px;
+  transition: background-color 0.3s;
+}
+
+.menu-item:last-child {
+  border-bottom: none; /* No border for the last item */
+}
+
+.menu-item:hover {
+  background-color: #f8f8f8; /* Highlight item on hover */
+}
+
+.item-name {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.item-description {
+  margin-bottom: 0.5em;
+  line-height: 1.6; /* Improved line spacing for readability */
+}
+
+.item-price {
+  font-weight: bold;
+  color: #5bc0de;
+  font-size: 1.2em;
+}
+
+  </style>
+  
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu">Edit Menu (Manager Access Portal)</a></li>
+      <li><a href="/menu/add">Add Menu Item (Manager Access Portal)</a></li>
+      
+    </ul>
+  </nav>
+  <h1>Martha's Good Eats Menu </h1>
+
+  <div class="menu-container">
+    <% menuItems.forEach(function(item) { %>
+      <div class="menu-item">
+        <h2 class="item-name"><%= item.name %></h2>
+        <p class="item-description"><%= item.description %></p>
+        <p class="item-price">$<%= item.price.toFixed(2) %></p>
+      </div>
+    <% }) %>
+  </div>
+  
+  
+</body>
+</html>

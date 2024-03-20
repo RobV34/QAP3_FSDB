@@ -1,17 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+nav {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center; /* Center align the navigation links */
+}
+
+nav li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #5bc0de;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #5bc0de;
+  color: #fff;
+}
+
+h1 {
+  color: #444;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #333; /* Darker color for better readability */
+  font-weight: bold;
+  background-color: #f8f8f8; /* Light background for buttons */
+  padding: 5px 15px;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+ul li a:hover {
+  color: #fff;
+  background-color: #31b0d5;
+}
+
+ul li a.delete {
+  background-color: #d9534f;
+}
+
+ul li a.delete:hover {
+  background-color: #c9302c;
+}
+
+ul li a.edit, ul li a.delete {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Center buttons vertically */
+}
+
+ul li a.edit {
+  right: 80px; /* Space from the right for the edit button */
+}
+
+ul li a.delete {
+  right: 10px; /* Space from the right for the delete button */
+}
+
+  </style>
+  
 </head>
 <body>
-    <h1>Menu Items</h1>
+  <nav>
     <ul>
-        <% menuItems.forEach(function(item) { %>
-            <li><%= item.name %> - $<%= item.price.toFixed(2) %></li>
-        <% }) %>
+      <li><a href="/">Home</a></li>
+      <li><a href="/menu">Edit Menu (Manager Access Portal)</a></li>
+      <li><a href="/menu/add">Add Menu Item (Manager Access Portal)</a></li>
+      
     </ul>
+  </nav>
+  <h1>Menu Items</h1>
+  <ul>
+    <% menuItems.forEach(function(item) { %>
+      <li>
+        <%= item.name %> - $<%= item.price.toFixed(2) %>
+        <!-- Edit link -->
+        <a href="/menu/edit/<%= item.id %>">Edit</a>
+        <!-- Delete link -->
+        <a href="/menu/delete/<%= item.id %>">Delete</a>
+      </li>
+    <% }) %>
+  </ul>
 </body>
 </html>
 
