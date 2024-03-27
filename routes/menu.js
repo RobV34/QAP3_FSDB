@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const menuDAL = require("../services/menu.dal");
 
-
-
-
 // This route should be '/' since you're mounting it on '/menu' in your main server file
 router.get("/", async (req, res) => {
   try {
@@ -16,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/add", (req, res) => {
+router.get("/add/", (req, res) => {
   res.render("add_menu_item");
 });
 
@@ -46,9 +43,6 @@ router.get("/delete/:id", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-
-
 
 // This would be in your routes/menu.js file.
 
@@ -138,7 +132,5 @@ router.delete("/api/menu/:id", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-
 
 module.exports = router;

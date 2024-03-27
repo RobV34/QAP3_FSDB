@@ -26,7 +26,7 @@ app.use(express.static("public"));
 
 // Routes
 
-const menuDAL = require('./services/menu.dal'); // Adjust the path as necessary
+const menuDAL = require("./services/menu.dal"); // Adjust the path as necessary
 
 app.get("/", async (req, res) => {
   try {
